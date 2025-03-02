@@ -20,7 +20,7 @@ OPCODES - INSTRUCTIONS
 
 ------------
 
-0 - HLT - halt program
+0 - CSR 000-FFF - call subroutine at address 000-FFF
 
 1 - JMP (000-FFF) - jump to program address (000-FFF) and push the current program address onto the stack
 
@@ -50,4 +50,4 @@ D - SHL Rx - shifts register x to the left by one
 
 E - SHR Rx - shifts register x to the right by one
 
-F - RET - go to most recent address in the stack and remove it from the stack
+F - RTS - return from subroutine
