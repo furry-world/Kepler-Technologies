@@ -1,0 +1,53 @@
+K6 microprocessor
+
+REGISTERS
+
+------------
+
+R. A, B and C - 6 bits - general purpose
+
+R. D - 1 bit - used for the carry/underflow flag
+
+Program Counter - 12 bits
+
+Stack Pointer - 4 bits
+
+Delay Timer - 6 bits
+
+------------
+
+OPCODES - INSTRUCTIONS
+
+------------
+
+0 - HLT - halt program
+
+1 - JMP (000-FFF) - jump to program address (000-FFF) and push the current program address onto the stack
+
+2 - EQU Rx (6-BIT CONST) - skips the next instruction if register X equals a 6 bit constant value or the value of its associated address
+
+3 - NEQ Rx (6-BIT CONST) - skips the next instruction if register X doesn't equal 6 bit constant value or the value of its associated address
+
+4 - EQU Rx Ry - skips the next instruction if register X equals register Y
+
+5 - NEQ Rx Ry - skips the next instruction if register X doesn't equal register Y
+
+6 - SET Rx (6-BIT CONST) - sets register X to a 6 bit constant value or the value of its associated address
+
+7 - SET Rx Ry - sets register x to register y
+
+8 - ADD Rx Ry - adds register y to register x (sets the carry/underflow flag to 1 if it exceeds the integer limit)
+
+9 - SUB Rx Ry - subtracts register y from register x (sets the carry/underflow flag to 0 if underflow occurs)
+
+A - IOR Rx Ry - sets Rx to Rx or Ry
+
+B - AND Rx Ry - sets Rx to Rx and Ry
+
+C - XOR Rx Ry - sets Rx to Rx xor Ry
+
+D - SHL Rx - shifts register x to the left by one
+
+E - SHR Rx - shifts register x to the right by one
+
+F - RET - go to most recent address in the stack and remove it from the stack
