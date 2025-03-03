@@ -4,9 +4,9 @@ REGISTERS
 
 ------------
 
-R. A, B and C - 6 bits - general purpose
+R. A, B, C, D, E and F - 6 bits - general purpose
 
-R. D - 1 bit - used for the carry/underflow flag
+R. H - 1 bit - used for the carry/underflow flag
 
 Program Counter - 12 bits
 
@@ -16,38 +16,44 @@ Delay Timer - 6 bits
 
 ------------
 
-OPCODES - INSTRUCTIONS
+OPCODES
 
 ------------
 
-0 - CSR 000-FFF - call subroutine at address 000-FFF
+000000 CCCCCC CCCCCC - call subroutine at 12-bit program memory address and pusb current address to stack
 
-1 - JMP (000-FFF) - jump to program address (000-FFF) and push the current program address onto the stack
+000001 CCCCCC CCCCCC - jump to 12-bit program memory address
 
-2 - EQU Rx (6-BIT CONST) - skips the next instruction if register X equals a 6 bit constant value or the value of its associated address
+000010 CCCCCC - relative jump to current address + 6-bit offset
 
-3 - NEQ Rx (6-BIT CONST) - skips the next instruction if register X doesn't equal 6 bit constant value or the value of its associated address
+000011 - return from subroutine to the latest pushed address in stack and pop it off the stack
 
-4 - EQU Rx Ry - skips the next instruction if register X equals register Y
+------
 
-5 - NEQ Rx Ry - skips the next instruction if register X doesn't equal register Y
+000100 XXXICC CCCCCC - skip the next instruction if the value of register XXX is equal to 8-bit constant (I determines immediate or address value)
 
-6 - SET Rx (6-BIT CONST) - sets register X to a 6 bit constant value or the value of its associated address
+000101 XXXICC CCCCCC - skip the next instruction if the value of register XXX is not equal to 8-bit constant (I determines immediate or address value)
 
-7 - SET Rx Ry - sets register x to register y
+000110 XXXICC CCCCCC - sets the value of register XXX to 8 bit constant (I determines immediate or address value)
 
-8 - ADD Rx Ry - adds register y to register x (sets the carry/underflow flag to 1 if it exceeds the integer limit)
+000111 XXX0CC CCCCC - stores the value of register XXX to 8-bit address
 
-9 - SUB Rx Ry - subtracts register y from register x (sets the carry/underflow flag to 0 if underflow occurs)
+001000 XXXYYY - skip the next instruction if value of register XXX is equal to value of register YYY
 
-A - IOR Rx Ry - sets Rx to Rx or Ry
+001001 XXXYYY - skip the next instruction  if value of register XXX is not equal to value of register YYY
 
-B - AND Rx Ry - sets Rx to Rx and Ry
+001010 XXXYYY - sets the value of register XXX to value of register YYY
 
-C - XOR Rx Ry - sets Rx to Rx xor Ry
+001011 XXXYYY - adds register YYY to register XXX (checks the flag for carry, and sets it to 1 if overflow occurs)
 
-D - SHL Rx - shifts register x to the left by one
+001100 XXXYYY - subtracts register YYY from register XXX (checks the flag for underflow and sets it to 0 if underflow occurs)
 
-E - SHR Rx - shifts register x to the right by one
+001101 XXXYYY - set register XXX to (XXX OR YYY)
 
-F - RTS - return from subroutine
+001110 XXXYYY - set register XXX to (XXX AND YYY)
+
+001111 XXXYYY - set register XXX to (XXX XOR YYY)
+
+010000 XXX000 - shift register XXX to the left through carry
+
+010001 XXX000 - shift register XXX to the right through carry
