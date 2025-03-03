@@ -20,7 +20,7 @@ OPCODES
 
 ------------
 
-000000 CCCCCC CCCCCC - call subroutine at 12-bit program memory address and pusb current address to stack
+000000 CCCCCC CCCCCC - call subroutine at 12-bit program memory address and push current address to stack
 
 000001 CCCCCC CCCCCC - jump to 12-bit program memory address
 
