@@ -15,6 +15,7 @@ Stack Pointer - 4 bits
 Delay Timer - 6 bits
 
 ------------
+
 FULL ISNTRUCTION OPCODE - GENERAL DESC. - CYCLE COUNT
 
 ------------
