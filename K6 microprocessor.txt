@@ -36,7 +36,7 @@ OPCODES
 
 000110 XXXICC CCCCCC - sets the value of register XXX to 8 bit constant (I determines immediate or address value)
 
-000111 XXX0CC CCCCC - stores the value of register XXX to 8-bit address
+000111 XXX0CC CCCCCC - stores the value of register XXX to 8-bit address
 
 001000 XXXYYY - skip the next instruction if value of register XXX is equal to value of register YYY
 
