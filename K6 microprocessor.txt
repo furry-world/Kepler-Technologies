@@ -4,7 +4,7 @@ REGISTERS
 
 ------------
 
-R. A, B, C, D, E and F - 6 bits - general purpose
+R. A, B, C, D, E, F and G - 6 bits - general purpose
 
 R. H - 1 bit - used for the carry/underflow flag
 
