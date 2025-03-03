@@ -32,7 +32,7 @@ I - immediate/address value determiner
 000100 XXXICC CCCCCC - compare register and 8-bit constant for equality - 6 cycles
 000101 XXXICC CCCCCC - compare register and 8 bit constant for inequality - 6 cycles
 000110 XXXICC CCCCCC - set value of register to 8 bit constant - 4 cycles
-000111 XXX0CC CCCCCC - store value of register to 8 bit address - 6 cycles
+000111 XXX0CC CCCCCC - store value of register to 8 bit address - 4 cycles
 001000 XXXYYY - compare two registers for equality - 3 cycles
 001001 XXXYYY - compare two registers for inequality - 3 cycles
 001010 XXXYYY - set value of one register to another - 3 cycles
