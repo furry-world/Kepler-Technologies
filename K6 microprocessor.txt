@@ -15,45 +15,30 @@ Stack Pointer - 4 bits
 Delay Timer - 6 bits
 
 ------------
-
-OPCODES
+FULL ISNTRUCTION OPCODE - GENERAL DESC. - CYCLE COUNT
 
 ------------
 
-000000 CCCCCC CCCCCC - call subroutine at 12-bit program memory address and push current address to stack
+C - constant bit
+XXX - register identifier 1
+YYY - register identifier 2
+I - immediate/address value determiner
 
-000001 CCCCCC CCCCCC - jump to 12-bit program memory address
-
-000010 CCCCCC - relative jump to current address + 6-bit offset
-
-000011 - return from subroutine to the latest pushed address in stack and pop it off the stack
-
-------
-
-000100 XXXICC CCCCCC - skip the next instruction if the value of register XXX is equal to 8-bit constant (I determines immediate or address value)
-
-000101 XXXICC CCCCCC - skip the next instruction if the value of register XXX is not equal to 8-bit constant (I determines immediate or address value)
-
-000110 XXXICC CCCCCC - sets the value of register XXX to 8 bit constant (I determines immediate or address value)
-
-000111 XXX0CC CCCCCC - stores the value of register XXX to 8-bit address
-
-001000 XXXYYY - skip the next instruction if value of register XXX is equal to value of register YYY
-
-001001 XXXYYY - skip the next instruction  if value of register XXX is not equal to value of register YYY
-
-001010 XXXYYY - sets the value of register XXX to value of register YYY
-
-001011 XXXYYY - adds register YYY to register XXX (checks the flag for carry, and sets it to 1 if overflow occurs)
-
-001100 XXXYYY - subtracts register YYY from register XXX (checks the flag for underflow and sets it to 0 if underflow occurs)
-
-001101 XXXYYY - set register XXX to (XXX OR YYY)
-
-001110 XXXYYY - set register XXX to (XXX AND YYY)
-
-001111 XXXYYY - set register XXX to (XXX XOR YYY)
-
-010000 XXX000 - shift register XXX to the left through carry
-
-010001 XXX000 - shift register XXX to the right through carry
+000000 CCCCCC CCCCCC - call to subroutine - 6 cycles
+000001 CCCCCC CCCCCC - immediate jump- 6 cycles
+000010 CCCCCC - relative jump - 3 cycles
+000011 - return from subroutine - 6 cycles
+000100 XXXICC CCCCCC - compare register and 8-bit constant for equality - 6 cycles
+000101 XXXICC CCCCCC - compare register and 8 bit constant for inequality - 6 cycles
+000110 XXXICC CCCCCC - set value of register to 8 bit constant - 4 cycles
+000111 XXX0CC CCCCCC - store value of register to 8 bit address - 6 cycles
+001000 XXXYYY - compare two registers for equality - 3 cycles
+001001 XXXYYY - compare two registers for inequality - 3 cycles
+001010 XXXYYY - set value of one register to another - 3 cycles
+001011 XXXYYY - add value of one register to the value of another - 3 cycles
+001100 XXXYYY - subtract value of one register to the value of another - 3 cycles
+001101 XXXYYY - set value of one register to (R1 OR R2) - 3 cycles
+001110 XXXYYY - set value of one register to (R1 AND R2) - 3 cycles
+001111 XXXYYY - set value of one register to (R1 XOR R2) - 3 cycles
+010000 XXX000 - shift value of a register to the left through carry - 3 cycles
+010001 XXX000 - shift value of a register to the right through carry - 3 cycles
