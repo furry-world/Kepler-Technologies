@@ -10,9 +10,10 @@ K6 can issue commands to the Commander by writing to its register G. Some comman
 
 |Value|Parameters|Description|
 |--|--|--|
-|00|E, F|Toggles the value of a single dot located at coordinates (E,F)|
+|00|E, F|Turns a single dot located at coordinates (E,F) on|
 |01|D, E, F|Writes 6 continuous dots contained in D to the LCD located at coordinates (E,F)|
 |02|F|Sets the note value of the tone generator to F|
+|03E, F|Turns a single dot located at coordinates (E,F) off|
 
 Commander also uses memory addresses to send data back to K6. Following adresses are used for following purposes:
 
@@ -28,7 +29,7 @@ Game 'n' Wave uses a 60x40 dot matrix LCD screen to display graphics. Commander 
 K6 can control this memory through Commander in either single-dot width or six-dot width.
 
 ### Single-dot width
-By writing the X coordinate to register E, Y coordinate to register F, and value `!00` to register G of K6, Commander will initiate a single dot write. It will halt K6 for a single cycle to modify its internal display memory by performing a NOT operation on the specified dot. This has the effect of inverting the specified dot.
+By writing the X coordinate to register E, Y coordinate to register F, and value `!00` or `!03` to register G of K6, Commander will initiate a single dot write. It will halt K6 for a single cycle to modify its internal display memory by setting the specified dot's value to on (if writing `!00`) or off (if writing `!03`). Dots that are on will appear darker than dots that are off.
 
 ### Six-dot width
 By writing the dot data to register D, X coordinate to register E, Y coordinate to register F, and value `!01` to register G of K6, Commander will initiate a six dot write. It will halt K6 for a single cycle to modify its internal display memory by setting the six consecutive dots to values specified in register D.
