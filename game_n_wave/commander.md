@@ -39,7 +39,7 @@ Commander has a built-in tone generator that is able to produce various musical 
 
 |Value|Note|
 |--|--|
-|`!00`|No sound|
+|`!00`|No sound (Low state)|
 |`!01`|F1|
 |`!02`|F#1/Gb1|
 |`!03`|G1|
@@ -102,7 +102,7 @@ Commander has a built-in tone generator that is able to produce various musical 
 |`!74`|E6|
 |`!75`|F6|
 |`!76`|F#6/Gb6|
-|`!77`|G6|
+|`!77`|No sound (High state)|
 
 ## Random number generator
 Commander features a 6-bit random number generator that can be accessed by reading memory address `$ED`. This number is refreshed every cycle.
